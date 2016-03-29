@@ -23,8 +23,6 @@ if [ ! -f boost_1_55_0.tar.gz ]; then
   ./b2 -j4 --prefix=$PWD --libdir=$PWD/lib64 --layout=system link=static install || (echo BOOST installation failed; exit 1)
 fi
 
-exit
-
 cd $HOME/tools/mosesdecoder
 ./bjam --with-boost=$HOME/tools/boost_1_55_0 --with-cmph=/home/pkoehn/moses/cmph-2.0/install -j12
 
