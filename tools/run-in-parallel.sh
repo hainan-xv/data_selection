@@ -16,9 +16,9 @@ nj=$4
 tmpfolder=$5
 
 mkdir -p $tmpfolder
-#split -d -n $nj $input $tmpfolder/s.
-numlines=`wc -l $input | awk '{print$1}'`
-split -d -l $[$numlines/$nj] $input $tmpfolder/s.
+split -d -n l/$nj $input $tmpfolder/s.
+#numlines=`wc -l $input | awk '{print$1}'`
+#split -d -l $[$numlines/$nj] $input $tmpfolder/s.
 
 #ls $tmpfolder/
 
@@ -31,7 +31,7 @@ for i in `seq -w $[$nj-1] -1 0`; do
   n=$[$n-1]
 done
 
-./queue.pl JOB=1:$nj $tmpfolder/log.JOB $command $tmpfolder/s.JOB $tmpfolder/out.JOB
+/export/a11/hxu/data_selection/tools/queue.pl JOB=1:$nj $tmpfolder/log.JOB $command $tmpfolder/s.JOB $tmpfolder/out.JOB
 
 for i in `seq 1 $[$nj]`; do
   cat $tmpfolder/out.$i >> $output
