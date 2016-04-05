@@ -25,8 +25,9 @@ int main(int argc, char** argv) {
     v[i] = i;
   }
 
-  for (int i = 0; i < k; i++) {
-    int s = rand() % n;
+//  for (int i = 0; i < n; i++) {
+  for (int i = 0; i < k; i++) { // I feel like this is OK too
+    int s = rand() % (n - i);
     swap(v[i], v[s]);
   }
 
