@@ -28,10 +28,15 @@ for i in en fr; do
   ~/data_selection/tools/raw-to-clean.sh $i site-crawl-25.$i site-crawl-25.clean.$i
 done
 
-)
-
 cd ~/corpus/
 
 ~/mosesdecoder/scripts/training/clean-corpus-n.perl \
     site-crawl-25.clean fr en \
     site-crawl-25.clean.short 1 80
+
+)
+
+cd ~/corpus/
+
+head site-crawl-25.clean.short.en -n 10000000 > site-crawl-10.clean.short.en
+head site-crawl-25.clean.short.fr -n 10000000 > site-crawl-10.clean.short.fr
