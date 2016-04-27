@@ -53,16 +53,16 @@ k=30000
 
 if [ True ]; then
 
-#cat $posdir/train.tagged.count.en | awk '{a=0;for(i=1;i<=NF;i++)a+=$i;print a}' > $gmmdir/train.length.en.txt
-#cat $posdir/train.tagged.count.fr | awk '{a=0;for(i=1;i<=NF;i++)a+=$i;print a}' > $gmmdir/train.length.fr.txt
-#paste $gmmdir/train.length.en.txt $posdir/train.tagged.count.en | awk '{printf($1" ");for(i=2;i<=NF;i++)printf(($i/$1)" ");print}' > $gmmdir/train.feats.en
-#paste $gmmdir/train.length.fr.txt $posdir/train.tagged.count.fr | awk '{printf($1" ");for(i=2;i<=NF;i++)printf(($i/$1)" ");print}' > $gmmdir/train.feats.fr
+cat $posdir/train.tagged.count.en | awk '{a=0;for(i=1;i<=NF;i++)a+=$i;print a}' > $gmmdir/train.length.en.txt
+cat $posdir/train.tagged.count.fr | awk '{a=0;for(i=1;i<=NF;i++)a+=$i;print a}' > $gmmdir/train.length.fr.txt
+paste $gmmdir/train.length.en.txt $posdir/train.tagged.count.en | awk '{printf($1" ");for(i=2;i<=NF;i++)printf(($i/$1)" ");print""}' > $gmmdir/train.feats.en
+paste $gmmdir/train.length.fr.txt $posdir/train.tagged.count.fr | awk '{printf($1" ");for(i=2;i<=NF;i++)printf(($i/$1)" ");print""}' > $gmmdir/train.feats.fr
 
-cat /export/a11/hxu/corpus/site-crawl-10.clean.short.tagged.count.en | awk '{a=0;for(i=1;i<=NF;i++)a+=$i;if(a>0)print a;else print -0.0001}' > $gmmdir/test.length.en.txt
-cat /export/a11/hxu/corpus/site-crawl-10.clean.short.tagged.count.fr | awk '{a=0;for(i=1;i<=NF;i++)a+=$i;if(a>0)print a;else print -0.0001}' > $gmmdir/test.length.fr.txt
+cat /export/a11/hxu/corpus/site-crawl-10.clean.short.tagged.count.en | awk '{a=0;for(i=1;i<=NF;i++)a+=$i;if(a>0)print a;else print -1000}' > $gmmdir/test.length.en.txt
+cat /export/a11/hxu/corpus/site-crawl-10.clean.short.tagged.count.fr | awk '{a=0;for(i=1;i<=NF;i++)a+=$i;if(a>0)print a;else print -1000}' > $gmmdir/test.length.fr.txt
 
-paste $gmmdir/test.length.en.txt /export/a11/hxu/corpus/site-crawl-10.clean.short.tagged.count.en | awk '{printf($1" ");for(i=2;i<=NF;i++)printf(($i/$1)" ");print}' > $gmmdir/test.feats.en
-paste $gmmdir/test.length.fr.txt /export/a11/hxu/corpus/site-crawl-10.clean.short.tagged.count.fr | awk '{printf($1" ");for(i=2;i<=NF;i++)printf(($i/$1)" ");print}' > $gmmdir/test.feats.fr
+paste $gmmdir/test.length.en.txt /export/a11/hxu/corpus/site-crawl-10.clean.short.tagged.count.en | awk '{printf($1" ");for(i=2;i<=NF;i++)printf(($i/$1)" ");print""}' > $gmmdir/test.feats.en
+paste $gmmdir/test.length.fr.txt /export/a11/hxu/corpus/site-crawl-10.clean.short.tagged.count.fr | awk '{printf($1" ");for(i=2;i<=NF;i++)printf(($i/$1)" ");print""}' > $gmmdir/test.feats.fr
 
 
 paste $gmmdir/train.feats.en $gmmdir/train.feats.fr $dir/scores.euro > $gmmdir/train.txt

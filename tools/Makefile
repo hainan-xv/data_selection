@@ -2,7 +2,7 @@ CC=g++
 CFLAGS = -Wall -c $(DEBUG) -std=c++11
 LFLAGS = -Wall $(DEBUG) -std=c++11
 
-all: get-lines delete-lines get-rand-index words-to-letters collect-letter-counts
+all: get-lines delete-lines get-rand-index words-to-letters collect-letter-counts bow-translation
 
 get-lines: get-lines.o
 	$(CC) $(LFLAGS) get-lines.o -O2 -o get-lines
@@ -15,6 +15,8 @@ words-to-letters: words-to-letters.o
 collect-letter-counts: collect-letter-counts.o
 	$(CC) $(LFLAGS) collect-letter-counts.o -g -o collect-letter-counts
 #	$(CC) collect-letter-counts.o -g -O2 -o collect-letter-counts
+bow-translation: bow-translation.o
+	$(CC) $(LFLAGS) bow-translation.o -g -o bow-translation
 
 get-lines.o: get-lines.cc
 	$(CC) $(CFLAGS) -c get-lines.cc
@@ -31,6 +33,8 @@ words-to-letters.o: words-to-letters.cc
 collect-letter-counts.o: collect-letter-counts.cc
 	$(CC) $(CFLAGS) -g -c collect-letter-counts.cc
 
+bow-translation.o: bow-translation.cc
+	$(CC) $(CFLAGS) -g -c bow-translation.cc
 
 clean:
 	rm *.o get-lines delete-lines get-rand-index words-to-letters collect-letter-counts
