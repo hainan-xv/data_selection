@@ -6,7 +6,7 @@ target=$3
 
 set -v
 
-cat $dict | awk '$3>0.01{print}' > $dict.short
+cat $dict | awk '$3>0.1{print}' > $dict.short
 
 #~/data_selection/tools/bow-translation $dict.short source
 

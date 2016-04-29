@@ -3,13 +3,18 @@
 import sys
 import datetime
 import math
+import re
+
+webpattern = re.compile("[a-zA-Z]\.[a-zA-Z]")
+numpattern = re.compile("[0-9]")
 
 def IsNumber(s):
-  try:
-    float(s)
-    return True
-  except ValueError:
+  return numpattern.match(s)
+
+def IsWebpage(s):
+  if (len(s) < 5):
     return False
+  return webpattern.match(s)
 
 def NumDiff(sent1, sent2):
   words1 = sent1.split()
@@ -19,7 +24,7 @@ def NumDiff(sent1, sent2):
 
   total_number = 0
   for word in words1:
-    if not IsNumber(word):
+    if not IsNumber(word) and not IsWebpage(word):
       continue
     
     total_number = total_number + 1
@@ -30,7 +35,7 @@ def NumDiff(sent1, sent2):
       count[word] = 1
     
   for word in words2:
-    if not IsNumber(word):
+    if not IsNumber(word) and not IsWebpage(word):
       continue
     
     total_number = total_number + 1
@@ -44,12 +49,10 @@ def NumDiff(sent1, sent2):
   for k, v in count.items():
     diff = diff + abs(v)
 
-  ratio = 1.0
+  ratio = 0.0
   if (total_number > 0):
     ratio = diff * 1.0 / total_number
   print ratio, total_number
-    
-
 
 def main():
   argv = sys.argv[1:]

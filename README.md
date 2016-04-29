@@ -31,16 +31,29 @@ All GMMs are trained on a 50,000 randomly sampled subset of EuroParl features
 
 Random sampling:
 ===============================================================================
-16                          500,000
+16          19.36           500,000
 17                          500,000
-18                          2,000,000
-19                          2,000,000
+18          21.43           2,000,000
+19          21.87           2,000,000
 20                          3,000,000
-21                          3,000,000
+21          21.79           3,000,000
+22          23.11           5,000,000
+23          23.14           5,000,000
+24                          10,000,000
+25                          10,000,000
+
+Better Feature Engineering:
+1. Non-word agreements (numbers, webpages)
+2. 2-way translation scores
+3. Pick the top 10 PoS tags for each language
+===============================================================================
+26                          1,000,000
+27                          merge 1 and 26
+
 
 TODO-list
 ===============================================================================
-number agreements (working on it already)
 in the BoW approach, get the most likely translation instead of soft decisions
 get most frequent PoS tags instead of all of them
 figure out a better way to train GMMs
+translation model could be used 2-ways
