@@ -83,13 +83,24 @@ Pick top BLEU scores:
 
 GMM with 2 lengths and BLEU
 =====================================================================================================
-44                          top 100,000                                             ~1.2 million
-45                          top 200,000                                             ~3 million
-46                          top 500,000                                             ~11 million
-47                          top 1,000,000                                           ~24 million
-48                          top 2,000,000                                           ~48 million
-49                          top 3,000,000                                           ~70 million
-50                          top 5,000,000                                           ~114 million
+44          12.52           top 100,000                                             ~1.2 million
+45          18.41           top 200,000                                             ~3 million
+46          21.76           top 500,000                                             ~11 million
+47          22.98           top 1,000,000                                           ~24 million
+48          23.10           top 2,000,000                                           ~48 million
+49          23.16           top 3,000,000                                           ~70 million
+50          23.78           top 5,000,000                                           ~114 million
+
+Variation on Method 26
+=====================================================================================================
+51          22.56           top 100,000                                             ~7 million
+52          23.60           top 200,000                                             ~13 million
+53          24.45           top 500,000                                             ~30 million
+54          25.04           top 800,000                                             ~46 million
+55          24.86           top 1,000,000                                           ~55 million
+56          24.84           top 2,000,000                                           ~90 million
+57          24.47           top 3,000,000                                           ~124 million
+58          24.11           top 5,000,000                                           ~182 million
 
 TODO-list:
 =====================================================================================================
@@ -98,6 +109,9 @@ figure out a better way to train GMMs
 alignment features
 manually examine the sentences more
 get the "good" sample from europarl to train GMMs
+news commentary data
+
+unigram similarity of MT results
 
 Running right now:
 =====================================================================================================
